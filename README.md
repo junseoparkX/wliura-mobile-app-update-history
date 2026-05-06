@@ -4,8 +4,6 @@ This repository contains scripts, processed datasets, and a final Excel submissi
 
 The goal of the task is to collect mobile app version and update history information for 10 popular apps and their matched iOS and Android versions. Each row in the final dataset represents one app-platform-version observation. The dataset is designed to support analysis of the timing, frequency, and nature of mobile app updates over time.
 
-GitHub repository: https://github.com/junseoparkX/wliura-mobile-app-update-history
-
 ---
 
 ## Project Overview
