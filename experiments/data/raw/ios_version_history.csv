@@ -1,0 +1,11 @@
+app_name,platform,developer_company,app_category,version_number,version_release_date,is_current_version,initial_app_release_date,update_description_release_notes,standardized_update_categories,standardized_update_summary,source_url,data_quality_notes
+Instagram,iOS,,Social Media,,,,,,,,https://apps.apple.com/us/app/instagram/id389801252,iOS history collection failed: store.versionHistory is not a function
+TikTok,iOS,,Social Media,,,,,,,,https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320,iOS history collection failed: store.versionHistory is not a function
+YouTube,iOS,,Entertainment / Video,,,,,,,,https://apps.apple.com/us/app/youtube/id544007664,iOS history collection failed: store.versionHistory is not a function
+Netflix,iOS,,Entertainment / Streaming,,,,,,,,https://apps.apple.com/us/app/netflix/id363590051,iOS history collection failed: store.versionHistory is not a function
+Spotify,iOS,,Music / Audio,,,,,,,,https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580,iOS history collection failed: store.versionHistory is not a function
+Uber,iOS,,Transportation,,,,,,,,https://apps.apple.com/us/app/uber-request-a-ride/id368677368,iOS history collection failed: store.versionHistory is not a function
+DoorDash,iOS,,Food Delivery,,,,,,,,https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451,iOS history collection failed: store.versionHistory is not a function
+Amazon Shopping,iOS,,Shopping,,,,,,,,https://apps.apple.com/us/app/amazon-shopping/id297606951,iOS history collection failed: store.versionHistory is not a function
+PayPal,iOS,,Finance,,,,,,,,https://apps.apple.com/us/app/paypal-pay-send-save/id283646709,iOS history collection failed: store.versionHistory is not a function
+Google Docs,iOS,,Productivity,,,,,,,,https://apps.apple.com/us/app/google-docs/id842842640,iOS history collection failed: store.versionHistory is not a function

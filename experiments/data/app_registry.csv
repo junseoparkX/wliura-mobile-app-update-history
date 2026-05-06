@@ -1,0 +1,11 @@
+app_name,app_category,android_package,android_url,ios_app_id,ios_url
+Instagram,Social Media,com.instagram.android,https://play.google.com/store/apps/details?id=com.instagram.android,389801252,https://apps.apple.com/us/app/instagram/id389801252
+TikTok,Social Media,com.zhiliaoapp.musically,https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically,835599320,https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320
+YouTube,Entertainment / Video,com.google.android.youtube,https://play.google.com/store/apps/details?id=com.google.android.youtube,544007664,https://apps.apple.com/us/app/youtube/id544007664
+Netflix,Entertainment / Streaming,com.netflix.mediaclient,https://play.google.com/store/apps/details?id=com.netflix.mediaclient,363590051,https://apps.apple.com/us/app/netflix/id363590051
+Spotify,Music / Audio,com.spotify.music,https://play.google.com/store/apps/details?id=com.spotify.music,324684580,https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580
+Uber,Transportation,com.ubercab,https://play.google.com/store/apps/details?id=com.ubercab,368677368,https://apps.apple.com/us/app/uber-request-a-ride/id368677368
+DoorDash,Food Delivery,com.dd.doordash,https://play.google.com/store/apps/details?id=com.dd.doordash,719972451,https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451
+Amazon Shopping,Shopping,com.amazon.mShop.android.shopping,https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping,297606951,https://apps.apple.com/us/app/amazon-shopping/id297606951
+PayPal,Finance,com.paypal.android.p2pmobile,https://play.google.com/store/apps/details?id=com.paypal.android.p2pmobile,283646709,https://apps.apple.com/us/app/paypal-pay-send-save/id283646709
+Google Docs,Productivity,com.google.android.apps.docs.editors.docs,https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.docs,842842640,https://apps.apple.com/us/app/google-docs/id842842640

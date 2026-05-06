@@ -1,0 +1,12 @@
+{
+  "name": "wliura-app-update-task",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Starter scripts for collecting iOS and Android mobile app update histories.",
+  "dependencies": {
+    "app-store-scraper": "^0.18.0"
+  },
+  "scripts": {
+    "collect:ios-history": "node scripts/collect_ios_history.js data/app_registry.csv data/raw/ios_version_history.csv"
+  }
+}
