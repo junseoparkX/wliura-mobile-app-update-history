@@ -1,8 +1,8 @@
 # WLIURA Mobile App Update History Dataset
 
-This repository contains scripts and processed data for a WLIURA S26 Research Assistant test task. The goal is to collect mobile app version and update history information for 10 popular apps and their matched iOS and Android versions.
+This repository contains scripts, processed datasets, and a final Excel submission for the WLIURA S26 Research Assistant test task.
 
-Each row in the final dataset represents one app-platform-version observation. The dataset is designed to support analysis of the timing, frequency, and nature of mobile app updates over time.
+The goal of the task is to collect mobile app version and update history information for 10 popular apps and their matched iOS and Android versions. Each row in the final dataset represents one app-platform-version observation. The dataset is designed to support analysis of the timing, frequency, and nature of mobile app updates over time.
 
 GitHub repository: https://github.com/junseoparkX/wliura-mobile-app-update-history
 
@@ -10,9 +10,16 @@ GitHub repository: https://github.com/junseoparkX/wliura-mobile-app-update-histo
 
 ## Project Overview
 
-This project collects version and update history data for 10 matched mobile apps across iOS and Android. The final submission workbook separates iOS and Android observations into different sheets and includes a summary sheet describing the collection process, observed update patterns, and data quality limitations.
+This project collects version and update history data for 10 matched mobile apps across iOS and Android.
 
-The main goal is to turn messy public app-history sources into a structured dataset with version numbers, release/update dates, update descriptions, standardized update categories, standardized summaries, source URLs, and notes about missing or lower-quality information.
+The final Excel workbook includes:
+
+1. A summary sheet describing the collection approach, GitHub repository, observed patterns, and data quality limitations.
+2. A combined iOS update history sheet.
+3. A combined Android update history sheet.
+4. A combined iOS + Android update history sheet.
+
+The main goal is to turn messy public app-history sources into a structured spreadsheet with version numbers, release/update dates, update descriptions, standardized update categories, standardized summaries, source URLs, and notes about missing or lower-quality information.
 
 ---
 
@@ -38,26 +45,52 @@ The main goal is to turn messy public app-history sources into a structured data
 ```text
 wliura-mobile-app-update-history/
 ├── data/
+│   ├── final/
+│   │   └── Junseo_Park_WLIURA_S26_Mobile_App_Update_History.xlsx
+│   │
 │   ├── ios_txt/
-│   ├── raw/
-│   │   ├── android/
-│   │   └── ios/
+│   │   ├── amazon_shopping_apptopia_about.txt
+│   │   ├── facebook_apptopia_about.txt
+│   │   ├── google_chrome_apptopia_about.txt
+│   │   ├── google_docs_apptopia_about.txt
+│   │   ├── grab_apptopia_about.txt
+│   │   ├── instagram_apptopia_about.txt
+│   │   ├── netflix_apptopia_about.txt
+│   │   ├── spotify_apptopia_about.txt
+│   │   ├── tiktok_apptopia_about.txt
+│   │   └── youtube_apptopia_about.txt
+│   │
 │   ├── processed/
 │   │   ├── android/
 │   │   │   └── android_apkpure_all_apps_combined.csv
-│   │   └── ios/
-│   │       └── ios_apptopia_all_apps_combined.csv
-│   └── final/
-│       └── mobile_app_update_history_submission.xlsx
+│   │   ├── ios/
+│   │   │   └── ios_apptopia_all_apps_combined.csv
+│   │   └── summary_sheet_with_github_styled.xlsx
+│   │
+│   └── raw/
+│
+├── deep_research/
+│   ├── batch1.docx
+│   ├── batch2.docx
+│   ├── batch3.docx
+│   └── combined_app_update_history_all.csv
+│
+├── experiments/
+│   ├── data/
+│   ├── node_modules/
+│   ├── output/
+│   ├── scripts/
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── requirements.txt
+│   └── RUN_COMMANDS.md
 │
 ├── scripts/
 │   ├── android/
 │   └── ios/
 │
-├── deep-research/
-├── experiments/
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -71,19 +104,20 @@ data/processed/ios/ios_apptopia_all_apps_combined.csv
 data/processed/android/android_apkpure_all_apps_combined.csv
 ```
 
-The final submission workbook is expected to be saved as:
+The final submission workbook is:
 
 ```text
-data/final/mobile_app_update_history_submission.xlsx
+data/final/Junseo_Park_WLIURA_S26_Mobile_App_Update_History.xlsx
 ```
 
 The final workbook is organized as:
 
 | Sheet | Description |
 |---|---|
-| `iOS_App_Update_History` | Combined iOS version/update history observations |
-| `Android_App_Update_History` | Combined Android version/update history observations |
-| `Summary` | Data collection approach, patterns, and limitations |
+| `Summary` | Data collection approach, GitHub repository, observed patterns, output files, and limitations |
+| `iOS_Update_History` | Combined iOS version/update history observations |
+| `Android_Update_History` | Combined Android version/update history observations |
+| `All_Update_History` | Combined iOS and Android observations in one sheet |
 
 ---
 
@@ -93,7 +127,7 @@ The final workbook is organized as:
 
 For iOS, I used Apptopia app pages as the main source. Since direct structured export was not always available, I saved browser-copied Apptopia page text into the `data/ios_txt/` folder and wrote Python scripts to parse the copied text.
 
-The iOS scripts extract:
+The iOS pipeline extracts:
 
 - app name
 - platform
@@ -105,17 +139,21 @@ The iOS scripts extract:
 - initial app release date where available
 - update description/release notes
 - standardized update categories
-- standardized update summaries
+- standardized summaries
 - source URL
 - app-level metadata where available
 
-Each iOS app has a separate parser script in `scripts/ios/`. The individual raw CSV files are saved to `data/raw/ios/`, then combined into one platform-level CSV in `data/processed/ios/`.
+The individual iOS records were combined into:
+
+```text
+data/processed/ios/ios_apptopia_all_apps_combined.csv
+```
 
 ### Android
 
-For Android, I used APKPure version history pages and detail pages as the main source. The Android scripts use Python requests and BeautifulSoup to parse version cards, version numbers, release dates, APK/XAPK formats, file sizes, and available detail-page metadata.
+For Android, I used APKPure version history pages and detail pages as the main source. The Android scripts parse version cards, version numbers, release dates, APK/XAPK formats, file sizes, and available detail-page metadata.
 
-The Android scripts extract:
+The Android pipeline extracts:
 
 - app name
 - platform
@@ -133,11 +171,15 @@ The Android scripts extract:
 - app permissions count where available
 - update description/release notes where available
 - standardized update categories
-- standardized update summaries
+- standardized summaries
 - APKPure source URLs
 - source notes and data quality notes
 
-Each Android app has a separate parser script in `scripts/android/`. The individual raw CSV files are saved to `data/raw/android/`, then combined into one platform-level CSV in `data/processed/android/`.
+The individual Android records were combined into:
+
+```text
+data/processed/android/android_apkpure_all_apps_combined.csv
+```
 
 ---
 
@@ -147,7 +189,7 @@ I explored multiple possible approaches before choosing the final pipeline.
 
 The initial idea was to use broad web search, LLM-assisted collection, app-store APIs, scraping tools, and public app-history platforms. However, this was not the best approach for collecting many row-level version observations because the output was difficult to verify, inconsistent across apps, and less reliable for source-by-source traceability.
 
-I also tried a Deep Research / ChatGPT-assisted collection workflow and stored the exploratory outputs in the `deep-research/` folder. This was useful for understanding possible sources and app coverage, but it was not ideal for producing a large, structured, reproducible spreadsheet with many version-level observations. The main issue was that it was difficult to guarantee consistent historical coverage, exact version dates, and clickable source URLs for every row.
+I also tried a Deep Research / ChatGPT-assisted collection workflow and stored the exploratory outputs in the `deep_research/` folder. This was useful for understanding possible sources and app coverage, but it was not ideal for producing a large, structured, reproducible spreadsheet with many version-level observations. The main issue was that it was difficult to guarantee consistent historical coverage, exact version dates, and clickable source URLs for every row.
 
 The `experiments/` folder contains additional exploratory attempts and alternative collection approaches. These were kept for transparency but are not the final pipeline.
 
@@ -157,8 +199,9 @@ The final approach was chosen because it is more reproducible and easier to audi
 2. Parse version records with Python scripts.
 3. Standardize fields into a shared schema.
 4. Combine individual app CSVs into platform-level datasets.
-5. Keep source URLs and source notes for traceability.
-6. Mark missing or generic update descriptions explicitly.
+5. Merge the summary, iOS, Android, and combined sheets into one final Excel workbook.
+6. Keep source URLs and source notes for traceability.
+7. Mark missing or generic update descriptions explicitly.
 
 ---
 
@@ -298,11 +341,17 @@ Combine the Android app-level CSV files:
 python scripts/android/combine_android_apkpure_csvs.py
 ```
 
-The processed outputs will be saved to:
+The processed outputs are saved to:
 
 ```text
 data/processed/ios/ios_apptopia_all_apps_combined.csv
 data/processed/android/android_apkpure_all_apps_combined.csv
+```
+
+The final workbook is saved to:
+
+```text
+data/final/Junseo_Park_WLIURA_S26_Mobile_App_Update_History.xlsx
 ```
 
 ---
@@ -343,7 +392,7 @@ Social media and entertainment apps tend to show frequent update cycles. Shoppin
 
 ## Notes on Exploratory Attempts
 
-The `deep-research/` folder contains early exploratory outputs from a Deep Research / ChatGPT-assisted approach. These files were not used as the final source of truth because they were less suitable for collecting many structured, row-level observations with consistent source URLs and reproducible parsing.
+The `deep_research/` folder contains early exploratory outputs from a Deep Research / ChatGPT-assisted approach. These files were not used as the final source of truth because they were less suitable for collecting many structured, row-level observations with consistent source URLs and reproducible parsing.
 
 The `experiments/` folder contains alternative or failed attempts, including earlier scraping/API-style workflows. These files are kept for transparency and should not be treated as the final dataset pipeline.
 
@@ -352,20 +401,21 @@ The final dataset should be based on:
 ```text
 data/processed/ios/ios_apptopia_all_apps_combined.csv
 data/processed/android/android_apkpure_all_apps_combined.csv
-data/final/mobile_app_update_history_submission.xlsx
+data/final/Junseo_Park_WLIURA_S26_Mobile_App_Update_History.xlsx
 ```
 
 ---
 
 ## Submission Format
 
-The final submission is an Excel workbook with three sheets:
+The final submission is an Excel workbook with four sheets:
 
-1. `iOS_App_Update_History`
-2. `Android_App_Update_History`
-3. `Summary`
+1. `Summary`
+2. `iOS_Update_History`
+3. `Android_Update_History`
+4. `All_Update_History`
 
-This format keeps the iOS and Android observations separate for readability while still documenting the full collection and processing approach in the summary sheet.
+This format keeps the summary first, separates iOS and Android observations for readability, and also provides a combined platform-level sheet for easier analysis.
 
 ---
 
